@@ -1,0 +1,25 @@
+
+<div>
+  <h2>Medical Policy Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th># of Dependents</th>
+        <th>Policy Name</th>
+        <th>Claimed Amount</th>
+        <th>Policy Max Amount</th>
+        <th>Balance Left for Current Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of medicalDetails">
+        <td>{{ detail.numberOfDependents }}</td>
+      
+        <td>{{ detail.policyName }}</td>
+        <td>{{ detail.claimedAmount }}</td>
+        <td>{{ detail.policyMaxAmount }}</td>
+        <td>{{ detail.balanceLeft }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
