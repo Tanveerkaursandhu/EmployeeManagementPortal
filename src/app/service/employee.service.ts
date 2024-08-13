@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Employee } from '../model/employee';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   private storageKey = 'employees';
 
-  constructor() {
+  constructor(private http:HttpClient) {
+    
     if (!localStorage.getItem(this.storageKey)) {
       const initialData = [
         { id: 1, name: 'John Doe', email: 'john@example.com', salary: 50000 },
@@ -29,7 +31,7 @@ export class EmployeeService {
 
   addEmployee(emp: Employee): Observable<Employee> {
     const employees = this.getEmployees();
-    emp.id = employees.length ? Math.max(...employees.map(e => e.id)) + 1 : 1; // Generate a new ID
+    emp.id = employees.length ? Math.max(...employees.map(e => e.id)) + 1 : 1; 
     employees.push(emp);
     this.saveEmployees(employees);
     return of(emp); 
